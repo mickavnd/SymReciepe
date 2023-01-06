@@ -11,7 +11,8 @@ use Faker\Generator as FakerGenerator;
 
 class AppFixtures extends Fixture
 {
-
+       //install package  composer require fakerphp/faker --dev    
+	   //install packege composer require --dev orm-fixtures
 		private FakerGenerator $faker;
 
 		public function __construct()

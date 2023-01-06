@@ -10,10 +10,10 @@
 
 
 		{% if not ingredients.items is same as ([])  %}
-			<h1>
-				mes Ingredient</h1>
+			<h1>mes Ingredient</h1>
+			<a href="{{path('ingredient_add')}}" class="btn btn-primary"> Ajouté un ingredient</a>
 			{% for message in app.flashes('success') %}
-				<div class="alert-success">
+				<div class=" alert alert-success mt-4">
 					{{message}}
 				</div>
 			{% endfor %}
@@ -31,6 +31,8 @@
 						<th scope="col">nom</th>
 						<th scope="col">prix</th>
 						<th scope="col">date de creation</th>
+						<th scope="col">edditon</th>
+						<th scope="col">suppression</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,6 +42,8 @@
 							<td>{{ingredient.name}}</td>
 							<td>{{ingredient.price}}</td>
 							<td>{{ingredient.creatAt|date('d/m/Y')}}</td>
+							<td> <a href="{{path('ingredient_edit',{id: ingredient.id})}}" class="btn btn-info">modifier</a>  </td>
+							<td><a href="{{path('ingredient_delete',{id: ingredient.id})}}" class="btn btn-danger">supprimer</a></td>
 						</tr>
 					{% endfor %}
 
@@ -56,3 +60,4 @@
 	{% endif %}
 
 {% endblock %}
+
