@@ -31,7 +31,7 @@ class IngredientController extends AbstractController
         //install package composer require knplabs/knp-paginator-bundle
         $ingrediants = $paginator->paginate(
             $repository->findAll(),
-            $request->query->getInt('page', 2),
+            $request->query->getInt('page', 1),
             10
         );
 
@@ -39,13 +39,13 @@ class IngredientController extends AbstractController
             'ingredients' => $ingrediants
         ]);
     }
-/**
- * this controller dislpay a form and  create  a new  Ingredient
- *
- * @param Request $request
- * @param EntityManagerInterface $manager
- * @return Response
- */
+    /**
+     * this controller dislpay a form and  create  a new  Ingredient
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/ingredient/add', name: 'ingredient_add', methods: ['GET', 'POST'])]
     public function addIngredient(Request $request, EntityManagerInterface $manager): Response
     {
@@ -64,7 +64,7 @@ class IngredientController extends AbstractController
                 'votre ingredient a bien etait ajouté'
             );
 
-             return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
 
 
@@ -75,10 +75,11 @@ class IngredientController extends AbstractController
         ]);
     }
 
-    #[Route('/ingredient/edit/{id}', name :'ingredient_edit', methods:['GET','POST'])]
-    public function edit( Ingredient $ingredient, Request $request ,EntityManagerInterface $manager):Response
+    
+    #[Route('/ingredient/edit/{id}', name: 'ingredient_edit', methods: ['GET', 'POST'])]
+    public function edit(Ingredient $ingredient, Request $request, EntityManagerInterface $manager): Response
     {
-        
+
         $form  = $this->createForm(IngredientType::class, $ingredient);
 
         $form->handleRequest($request);
@@ -93,19 +94,21 @@ class IngredientController extends AbstractController
                 'votre ingredient a bien modifier ajouté'
             );
 
-             return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
 
 
 
-        return $this->render('pages/ingredient/edit.html.twig',[
-            'form'=> $form->createView()
+        return $this->render('pages/ingredient/edit.html.twig', [
+            'form' => $form->createView()
         ]);
     }
-#[Route('/ingredient/delete/{id}','ingredient_delete',methods:['GET'])]
-    public function delete(Ingredient $ingredient,EntityManagerInterface $manager ): Response
+
+    
+    #[Route('/ingredient/delete/{id}', 'ingredient_delete', methods: ['GET'])]
+    public function delete(Ingredient $ingredient, EntityManagerInterface $manager): Response
     {
-        
+
 
         $manager->remove($ingredient);
         $manager->flush();
