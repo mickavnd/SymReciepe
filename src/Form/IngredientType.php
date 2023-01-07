@@ -18,8 +18,6 @@ class IngredientType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-
-
                 'attr' => [
                     'class' => 'form-control',
                     'minlenght' => '2',

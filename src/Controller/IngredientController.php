@@ -74,9 +74,16 @@ class IngredientController extends AbstractController
 
         ]);
     }
-
-    
-    #[Route('/ingredient/edit/{id}', name: 'ingredient_edit', methods: ['GET', 'POST'])]
+ 
+    /**
+     * Undocumented function
+     *
+     * @param Ingredient $ingredient
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */ 
+     #[Route('/ingredient/edit/{id}', name: 'ingredient_edit', methods: ['GET', 'POST'])]
     public function edit(Ingredient $ingredient, Request $request, EntityManagerInterface $manager): Response
     {
 
@@ -105,6 +112,14 @@ class IngredientController extends AbstractController
     }
 
     
+    
+    /**
+     * Undocumented function
+     *
+     * @param Ingredient $ingredient
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/ingredient/delete/{id}', 'ingredient_delete', methods: ['GET'])]
     public function delete(Ingredient $ingredient, EntityManagerInterface $manager): Response
     {

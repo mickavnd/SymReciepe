@@ -11,7 +11,13 @@
 
 		{% if not recipes.items is same as ([])  %}
 			<h1>mes recettes</h1>
-		
+			<a href="{{path('recipe_add')}}" class="btn btn-primary"> Ajouté un ingredient</a>
+				{% for message in app.flashes('success') %}
+				<div class=" alert alert-success mt-4">
+					{{message}}
+				</div>
+			{% endfor %}
+	
 			<div class="count mt-4">
 				<h4>il y a
 					{{ recipes.getTotalItemCount  }}
@@ -39,12 +45,10 @@
 							<td>{{recipe.price}}</td>
                             <td>{{(recipe.difficutly is null)?'non renseingner':recipe.difficutly}}</td>
 							<td>{{recipe.creatAt|date('d/m/Y')}}</td>
+							<td> <a href="{{path('recipe_edit',{id: recipe.id})}}" class="btn btn-info">modifier</a>  </td>
+							<td><a href="{{path('recipe_delete',{id: recipe.id})}}" class="btn btn-danger">supprimer</a></td>
 							<td>
-								TODO
-							</td>
-							<td>
-								TODO
-							</td>
+							
 						</tr>
 					{% endfor %}
 

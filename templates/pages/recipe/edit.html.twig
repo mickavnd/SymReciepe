@@ -1,14 +1,13 @@
 {% extends "base.html.twig" %}
 
-
-{% block title %}SymRecipe -Nouvelle recette{% endblock %}
 {% block body %}
 
 	<div class="container mt-4">
 
-		<h1>creation d'une recette</h1>
+		<h1>
+		Modidication  de  recettes </h1>
 
-	{{ form_start(form) }}
+        {{ form_start(form) }}
 		
 		<div class="form-group">
 			{{form_label(form.name)}}
@@ -69,7 +68,6 @@
 				{{ form_errors(form.ingredient) }}
 			</div>
 		</div>
-		
 
 		<div class="form-group d-flex justify-content-start">
 			<div>
@@ -80,6 +78,8 @@
 		</div>
 
 		{{ form_end(form) }}
+
+		
 
 	</div>
 
