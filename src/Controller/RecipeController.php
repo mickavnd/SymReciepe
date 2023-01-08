@@ -98,7 +98,7 @@ class RecipeController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'votre ingredient a bien modifier ajouté'
+                'votre recette bien éte modifier'
             );
 
             return $this->redirectToRoute('recipe_index');
@@ -130,7 +130,7 @@ class RecipeController extends AbstractController
 
         $this->addFlash(
             'success',
-            'votre ingredient a bien ete supprimer'
+            'votre recette a bien ete supprimer'
         );
 
         return $this->redirectToRoute('recipe_index');
