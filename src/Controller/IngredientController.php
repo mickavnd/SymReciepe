@@ -76,7 +76,7 @@ class IngredientController extends AbstractController
     }
  
     /**
-     * Undocumented function
+     * this function  update Ingredient by Id
      *
      * @param Ingredient $ingredient
      * @param Request $request
@@ -114,7 +114,7 @@ class IngredientController extends AbstractController
     
     
     /**
-     * Undocumented function
+     * this fuction  delete ingredient by Id
      *
      * @param Ingredient $ingredient
      * @param EntityManagerInterface $manager

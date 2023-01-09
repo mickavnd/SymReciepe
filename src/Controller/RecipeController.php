@@ -76,7 +76,7 @@ class RecipeController extends AbstractController
     }
 
      /**
-     * Undocumented function
+     * this function  upadate  an recipe
      *
      * @param Ingredient $ingredient
      * @param Request $request
@@ -114,7 +114,7 @@ class RecipeController extends AbstractController
     
     
     /**
-     * Undocumented function
+     * this function  delete  an recipe by Id
      *
      * @param Ingredient $ingredient
      * @param EntityManagerInterface $manager

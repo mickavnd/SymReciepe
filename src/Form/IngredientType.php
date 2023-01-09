@@ -16,6 +16,7 @@ class IngredientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        //command to create  form  : php bin/console make:form
         $builder
             ->add('name', TextType::class, [
                 'attr' => [

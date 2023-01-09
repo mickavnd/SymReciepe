@@ -17,17 +17,24 @@ class AppFixtures extends Fixture
 	//install packege composer require --dev orm-fixtures
 	private FakerGenerator $faker;
 
-	// private UserPasswordHasherInterface $hasher;
 	
+
 	public function __construct()
 	{
 		$this->faker = Factory::create('fr_FR');
-		// $this->hasher=$hasher;
-		// UserPasswordHasherInterface $hasher
+		
 	}
 
+	/**
+	 * function fixture
+	 *
+	 * @param ObjectManager $manager
+	 * @return void
+	 */
 	public function load(ObjectManager $manager): void
-	{				//ingrdieent
+	{
+
+		//ingrdieent commande d:f:l(doctrine:fixture:load )
 		$ingredient = [];
 		for ($i = 1; $i < 50; $i++) {
 			$ingrediant = new Ingredient;
@@ -38,7 +45,7 @@ class AppFixtures extends Fixture
 			$manager->persist($ingrediant);
 		}
 
-		//recipie
+		// fixture recipie
 		for ($j = 0; $j < 25; $j++) {
 
 			$recipie = new Recipe();
@@ -60,19 +67,17 @@ class AppFixtures extends Fixture
 		}
 
 
-
+		//fixture User
 		for ($i = 0; $i < 10; $i++) {
 			$user = new User();
 			$user->setFullName($this->faker->name())
-				 ->setPseudo(mt_rand(0, 1) === 1 ? $this->faker->firstName() : null)
-				 ->setEmail($this->faker->email())
-				 ->setRoles(['ROLE_USER'])
-				 ->setPlainPassword('password');
+				->setPseudo(mt_rand(0, 1) === 1 ? $this->faker->firstName() : null)
+				->setEmail($this->faker->email())
+				->setRoles(['ROLE_USER'])
+				->setPlainPassword('password');
 
-		
-				$manager->persist($user);
-			
-			
+
+			$manager->persist($user);
 		}
 
 

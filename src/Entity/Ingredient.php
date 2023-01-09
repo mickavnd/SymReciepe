@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 //create entity with  php bin/console  make:entity ,look also  command  php  bin/console ans symfony for  watch all command necessary
+// make :migration for add migration
+// d:m:m  for add in data base
 #[ORM\Entity(repositoryClass: IngredientRepository::class)]
 #[UniqueEntity('name')]
 class Ingredient
