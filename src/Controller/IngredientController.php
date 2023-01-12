@@ -8,6 +8,8 @@ use App\Repository\IngredientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use PhpParser\Builder\Namespace_;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +27,7 @@ class IngredientController extends AbstractController
      * @return Response
      */
     #[Route('/ingredient', name: 'homepage', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(IngredientRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         // $ingredients =  $repository->findAll();
@@ -47,6 +50,7 @@ class IngredientController extends AbstractController
      * @return Response
      */
     #[Route('/ingredient/add', name: 'ingredient_add', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function addIngredient(Request $request, EntityManagerInterface $manager): Response
     {
         $ingredient = new Ingredient();
@@ -84,6 +88,7 @@ class IngredientController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */ 
+     #[Security("is_granted('ROLE_USER') and user === ingredient.getUser()")]
      #[Route('/ingredient/edit/{id}', name: 'ingredient_edit', methods: ['GET', 'POST'])]
     public function edit(Ingredient $ingredient, Request $request, EntityManagerInterface $manager): Response
     {
