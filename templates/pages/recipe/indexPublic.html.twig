@@ -1,29 +1,16 @@
 {% extends "base.html.twig" %}
 
-{% block title %}SymRecipie - accueil
-{% endblock %}
-
 {% block body %}
+
+
 	<div class="container mt-4">
-		<div class="jumbotron">
-			<h1 class="display-4">Bienvenue sur SymRecipie</h1>
-			{% for message in app.flashes('success') %}
-				<div class=" alert alert-success mt-4">
-					{{message}}
-				</div>
-			{% endfor %}
-			<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-			<hr class="my-4">
-			<p>Pour commencer, rendez-vous sur la page d'inscription pour utiliser lapplication</p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">inscription</a>
-		 </div>
+		{% if not recipes.items is same as ([])  %}
+			<h1>recette de la communauté</h1>
 
-		<div class="recipes">
-
-		<div class="carte">
+			<div class="carte">
 				{% for recipe in recipes %}
 
-					<div class="card mb-1">
+					<div class="card mb-3">
 						<h3 class="card-header">Recette numero{{recipe.id}}</h3>
 						<div class="card-body">
 							<h5 class="card-title">{{recipe.name}}</h5>
@@ -47,11 +34,16 @@
 					
 				{% endfor %}
 			</div>
-		
-		
-		</div>
+            <div class="navigation d-flex justify-content-center mt-4">
+				{{ knp_pagination_render(recipes) }}
+			</div
 
-		
-	</div>
-		{% endblock %}
+
+		{% else %}
+			<h4>
+				il n'y a pas de recettes</h4>
+		{% endif %}
+
+
+	{% endblock %}
 

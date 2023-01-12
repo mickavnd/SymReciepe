@@ -71,6 +71,7 @@ class AppFixtures extends Fixture
 				->setDescription($this->faker->text(200))
 				->setPrice(mt_rand(1, 1000))
 				->setIsFavorite(mt_rand(0, 1) == 1 ? true : false)
+				->setIsPublic(mt_rand(0, 1) == 1 ? true : false)
 				->setUser($users[mt_rand(0, count($users) -1)]);
 
 
