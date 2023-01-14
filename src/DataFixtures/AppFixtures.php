@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Ingredient;
+use App\Entity\Mark;
 use App\Entity\Recipe;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -61,8 +62,8 @@ class AppFixtures extends Fixture
 		}
 
 		// fixture recipie
+		$recipes =[];
 		for ($j = 0; $j < 25; $j++) {
-
 			$recipie = new Recipe();
 			$recipie->setName($this->faker->word())
 				->setTime(mt_rand(0, 1) == 1 ? mt_rand(1, 1440) : null)
@@ -79,10 +80,22 @@ class AppFixtures extends Fixture
 
 				$recipie->addIngredient($ingredient[mt_rand(0, count($ingredient) - 1)]);
 			}
-
+			$recipes[] = $recipie;
 			$manager->persist($recipie);
 		}
 
+		//mark
+		foreach($recipes as $recipie)
+		{
+			for ($i=0; $i < mt_rand(0, 4) ; $i++) { 
+				$mark = new Mark();
+				$mark->setMark(mt_rand(1,5))
+				      ->setUser($users[mt_rand(0 , count($users)-1)])
+					  ->setRecipe($recipie);
+
+					  $manager->persist($mark);
+			}
+		}
 
 		
 		
