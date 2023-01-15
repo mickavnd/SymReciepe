@@ -19,7 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RecipeType extends AbstractType
 {
@@ -125,6 +125,13 @@ class RecipeType extends AbstractType
                     new Assert\LessThan(1001)
                 ]
             ])
+
+            ->add('imageFile',VichImageType::class,[
+                'label' =>'image de la recette',
+                'label_attr'=>[
+                    'class'=>'form-label mt-4'
+                ]
+            ])
             ->add('isFavorite',CheckboxType::class,[
                 'attr'=>[
                     'class'=>'form-ckeck-input',
@@ -140,6 +147,22 @@ class RecipeType extends AbstractType
                 ]
 
                 ])
+
+                ->add('isPublic',CheckboxType::class,[
+                    'attr'=>[
+                        'class'=>'form-ckeck-input',
+                       
+                    ],
+                    'required'=> false,
+                    'label'=>'Public ?',
+                    'label_attr'=>[
+                        'class'=>'form-check-label'
+                    ],
+                    'constraints' =>[
+                        new Assert\NotNull()
+                    ]
+    
+                    ])
             ->add('ingredient',EntityType:: class,[
                 
                 // looks for choices from this entity

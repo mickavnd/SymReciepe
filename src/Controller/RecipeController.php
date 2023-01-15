@@ -67,7 +67,7 @@ class RecipeController extends AbstractController
      * @param Recipe $recipe
      * @return Response
      */ 
-    #[Security("is_granted('ROLE_USER') and recipe.getIsPublic() === true")]
+    #[Security("is_granted('ROLE_USER') and recipe.getIsPublic() === true || user === recipe.getUser() ")]
     #[Route('/recette/show/{id}','recipe_show', methods:['GET','POST'])]
     public function show(Recipe $recipe, Request $request, MarkRepository $markRepository,EntityManagerInterface $manager) :Response
     {
@@ -111,10 +111,6 @@ class RecipeController extends AbstractController
     } 
              
         
-    
-
-       
-
 
     /**
      * this  controller add  new recipie
@@ -133,6 +129,7 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid())
         {
+            // dd($form->getData());
          $recipe=$form->getData();
          $recipe->setUser( $this->getUser());
 
@@ -162,9 +159,9 @@ class RecipeController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @return Response
-     */ 
+     */
+    #[Security("is_granted('ROLE_USER') and user === recipe.getUser()")]
     #[Route('/recette/edit/{id}', name: 'recipe_edit', methods: ['GET', 'POST'])]
-    #[Security("is_ granted('ROLE_USER) and user === recipe.getUser()")]
     public function edit(Recipe $recipe, Request $request, EntityManagerInterface $manager): Response
     {
 
