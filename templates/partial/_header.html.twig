@@ -42,8 +42,10 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="{{path('User_edit',{id: app.user.id})}}">modifier mes information</a>
 						<a class="dropdown-item" href="{{path('User_edit_Password',{id:app.user.id})}}">modifier mon mot de passe</a>
+						<a class="dropdown-item" href="{{path('app_contact')}}">contact</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="{{path('security_logout')}}">deconnexion</a>
+						
 					</div>
 				</li>
 
@@ -58,6 +60,10 @@
 					<a class="nav-link" href="{{path('security_login')}}">
 						connexion</a>
 
+				</li>
+
+				<li class="nav-item">
+				<a class="nav-link" href="{{path('app_contact')}}">contact</a>
 				</li>
 
 
