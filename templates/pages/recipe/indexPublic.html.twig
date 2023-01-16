@@ -15,9 +15,21 @@
 						<div class="card-body">
 							<h5 class="card-title">{{recipe.name}}</h5>
 						</div>
-						<div class="recipe_images">
-							<img style="max-width: 500px;" src="{{vich_uploader_asset(recipe,'imageFile')}}" alt="">
-						</div>
+						{% if recipe.imageName == false %}
+
+							<svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveaspectratio="xMidYMid slice" viewbox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+								<rect width="100%" height="100%" fill="#868e96"></rect>
+								<text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+							</svg>
+
+						{% else %}
+
+							<div class="recipe_images">
+								<img style="max-width: 400px;" src="{{vich_uploader_asset(recipe,'imageFile')}}" alt="">
+							</div>
+
+						{% endif %}
+
 
 						<div class="card-body">
 							<p class="card-text">{{recipe.description|slice(0, 50) ~ '...' }}</p>
@@ -36,7 +48,8 @@
 			</div>
 			<div class="navigation d-flex justify-content-center mt-4">
 				{{ knp_pagination_render(recipes) }}
-			</div<h4> {% else %}
+			</div<h4>
+		{% else %}
 			il n'y a pas de recettes</h4>
 	{% endif %}
 

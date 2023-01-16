@@ -7,11 +7,16 @@
 {% block body %}
 
 	<div class="container mt-4">
-
+		{% for message in app.flashes('success') %}
+			<div class=" alert alert-success mt-4">
+				{{message}}
+			</div>
+		{% endfor %}
 
 		{% if not ingredients.items is same as ([])  %}
 			<h1>mes Ingredient</h1>
-			<a href="{{path('ingredient_add')}}" class="btn btn-primary"> Ajouté un ingredient</a>
+			<a href="{{path('ingredient_add')}}" class="btn btn-primary">
+				Ajouté un ingredient</a>
 			{% for message in app.flashes('success') %}
 				<div class=" alert alert-success mt-4">
 					{{message}}
@@ -20,7 +25,7 @@
 			<div class="count mt-4">
 				<h4>il y a
 					{{ ingredients.getTotalItemCount  }}
-					ingredient au total
+					ingredient(s) au total
 				</h4>
 			</div>
 
@@ -40,10 +45,14 @@
 						<tr class="table-primary">
 							<th scope="row">{{ingredient.id}}</th>
 							<td>{{ingredient.name}}</td>
-							<td>{{ingredient.price}}</td>
+							<td>{{ingredient.price|number_format(2,'.',',') }}€</td>
 							<td>{{ingredient.creatAt|date('d/m/Y')}}</td>
-							<td> <a href="{{path('ingredient_edit',{id: ingredient.id})}}" class="btn btn-info">modifier</a>  </td>
-							<td><a href="{{path('ingredient_delete',{id: ingredient.id})}}" class="btn btn-danger">supprimer</a></td>
+							<td>
+								<a href="{{path('ingredient_edit',{id: ingredient.id})}}" class="btn btn-info">modifier</a>
+							</td>
+							<td>
+								<a href="{{path('ingredient_delete',{id: ingredient.id})}}" class="btn btn-danger">supprimer</a>
+							</td>
 						</tr>
 					{% endfor %}
 
@@ -57,6 +66,9 @@
 	{% else %}
 		<h4>
 			il n'y a pas d'ingredient</h4>
+		<a href="{{path('ingredient_add')}}" class="btn btn-primary">
+			Ajouté un ingredient</a>
+
 	{% endif %}
 
 {% endblock %}

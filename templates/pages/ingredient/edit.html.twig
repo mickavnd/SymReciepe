@@ -6,8 +6,7 @@
 
 		<h1>
 		Modidication  de  l'ingredient</h1>
-
-		{{ form_start(form) }}
+<form action="" method="post">
 		<div class="form-error">
 			{{ form_errors(form) }}
 		</div>
@@ -30,13 +29,15 @@
 
 		<div class="form-group d-flex justify-content-start">
 			<div>
-				{{form_row(form.submit)}}
-			</div>
-
+			{{form_row(form._token)}}
+	    <button type ="submit" id="ingredient_submit" name="ingredient[submit]" class ="btn btn-primary mt-4">Modifier l'ingredient</button>
+         </div>
 
 		</div>
 
-		{{ form_end(form) }}
+	
+
+	</form>
 
 	</div>
 
