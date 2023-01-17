@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
 
-    private ?string $plainPassword = null;
+    private ?string $plainPassword  ;
 
 
     /**
@@ -48,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     #[Assert\NotBlank()]
-    private ?string $password ='password' ;
+    private ?string $password="password"  ;
     
     #[ORM\Column]
     #[Assert\NotNull()]
