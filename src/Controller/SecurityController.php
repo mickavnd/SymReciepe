@@ -67,7 +67,7 @@ class SecurityController extends AbstractController
             $manager->persist($user);
 
             $manager->flush();
-        //    dd($form->getData());
+        
            
 
             $this->addFlash(

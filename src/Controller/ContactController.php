@@ -20,7 +20,7 @@ class ContactController extends AbstractController
         $contact = new Contact();
 
         if ($this->getUser()) {
-            // dd($this->getUser());
+           
             $contact->setFullName($this->getUser()->getFullName())
                 ->setEmail($this->getUser()->getEmail());
         }
@@ -52,7 +52,7 @@ class ContactController extends AbstractController
                 'le mail a bien etait envoyer'
             );
 
-            return $this->redirectToRoute('home.index');
+            return $this->redirectToRoute('app_index');
         }
 
         return $this->render('pages/contact/index.html.twig', [
