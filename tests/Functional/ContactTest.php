@@ -16,8 +16,7 @@ class ContactTest extends WebTestCase
         // $this->assertSelectorTextContains('h1', 'Formulaire de contact');
 
           // Récupérer le formulaire
-        //   $submitButton = $crawler->selectButton('envoyer');
-        //   $form = $submitButton->form();
+          
   
         //   $form["contact[fullName]"] = "Jean Dupont";
         //   $form["contact[email]"] = "jd@symrecipe.com";
@@ -28,7 +27,7 @@ class ContactTest extends WebTestCase
         //   $client->submit($form);
   
           // Vérifier le statut HTTP
-        //   $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        //   $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
   
           // Vérifier l'envoie du mail
         //   $this->assertEmailCount(0);

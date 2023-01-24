@@ -14,12 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
+    #[Route('/contact', name: 'app_contact',)]
     public function index(Request $request, EntityManagerInterface $manager,MailService $mailService ): Response
     {
         $contact = new Contact();
-
-        if ($this->getUser()) {
+        if ( $this->getUser()) {
            
             $contact->setFullName($this->getUser()->getFullName())
                 ->setEmail($this->getUser()->getEmail());
@@ -44,15 +43,14 @@ class ContactController extends AbstractController
                 'email/contact.html.twig',
                 ['contact'=>$contact]
             );
-
-
+ 
 
             $this->addFlash(
                 'success',
                 'le mail a bien etait envoyer'
             );
 
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_contact',);
         }
 
         return $this->render('pages/contact/index.html.twig', [
