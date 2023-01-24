@@ -33,6 +33,7 @@
 						<th scope="col">prix</th>
                         <th scope="col">difficulter</th>
 						<th scope="col">date de creation</th>
+						<th scope="col">detail</th>
 						<th scope="col">edditon</th>
 						<th scope="col">suppression</th>
 					</tr>
@@ -45,6 +46,7 @@
 							<td>{{recipe.price}}</td>
                             <td>{{(recipe.difficutly is null)?'non renseingner':recipe.difficutly}}</td>
 							<td>{{recipe.creatAt|date('d/m/Y')}}</td>
+							<td> <a href="{{path('recipe_show',{id: recipe.id})}}" class="btn btn-warning">detail</a>  </td>
 							<td> <a href="{{path('recipe_edit',{id: recipe.id})}}" class="btn btn-info">modifier</a>  </td>
 							<td><a href="{{path('recipe_delete',{id: recipe.id})}}" class="btn btn-danger">supprimer</a></td>
 							<td>

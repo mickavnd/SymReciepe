@@ -21,7 +21,7 @@
  <p> la moyenne  de cette recette est  de : {{recipe.average |number_format(2,'.',',')}} /5</p> 
 
  {% if recipe.time %}
- <p>temps (en minute) :{{recipe.time}}</p>
+ <p>temps (en minute) :{{recipe.time |min_to_hour}}</p>
  {% else %}
  <p> temps  non renseigner</p>
  {% endif %}
